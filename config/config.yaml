@@ -1,0 +1,7 @@
+input_image_file_path: "sample.jpeg"
+output_directory: "sample"
+fov: 90 #degree
+longitude_delta: 10 # degree
+latitude_delta:  10 # degree
+perspective_image_height: 512 # pic
+perspective_image_width:  512 # pic
