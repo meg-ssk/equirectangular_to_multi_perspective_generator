@@ -23,9 +23,7 @@ def main():
     fov_degree = (cfg['fov'], cfg['fov'])
     perspective_image_shape = (cfg['perspective_image_height'], cfg['perspective_image_width'])
     
-    #perspec_image = generate_perpective_from_equirectangular(eqr_img, fov_degree, longitude_degree, latitude_degree, perspective_image_shape)
-    #cv2.imwrite(output_directory + "/test.png", perspec_image)
-    
+    # generate perspective images by iteration with different longitude and latitude
     for longitude_degree in tqdm.tqdm(np.arange(0, 360, longitude_delta)):
         for latitude_degree in tqdm.tqdm(np.arange(0, 360, latitude_delta)):
             perspec_image = generate_perpective_from_equirectangular(eqr_img, fov_degree, longitude_degree, latitude_degree, perspective_image_shape)
@@ -36,6 +34,18 @@ def main():
     return
 
 def generate_perpective_from_equirectangular(eqr_img, fov_degree, longitude_degree, latitude_degree, perspective_image_shape):
+    """_summary_
+
+    Args:
+        eqr_img (ndarray): equirectangular image in numpy array
+        fov_degree (float): field of view in degree for geneating perspective image
+        longitude_degree (float): longitude (azimuthal angle) in degree
+        latitude_degree (float): latitude (polar angle) in degree
+        perspective_image_shape (tuple): shape of the generated perspective image with (height, width)
+
+    Returns:
+        ndarray: perspective image in numpy array
+    """
     return py360convert.e2p(eqr_img, fov_degree, longitude_degree, latitude_degree, perspective_image_shape)
 
 if __name__ == "__main__":
