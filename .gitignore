@@ -139,5 +139,5 @@ dmypy.json
 *.png
 *.tif
 *.tiff
-!/images_for_README/*.jpg
+!/assets/images_for_README/*.png
 !/input/sample.jpeg
